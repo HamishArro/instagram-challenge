@@ -1,24 +1,59 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Welcome to RetroGram
 
-Things you may want to cover:
+## Plan
 
-* Ruby version
+MVP: users can log onto RetroGram and post a picture for other users to see.
 
-* System dependencies
+### levels:
+- Follows
+- User
+  - Pictures
+    - Comments
+    - Likes
 
-* Configuration
+### Tables
+Users:
 
-* Database creation
+| ID | email | password | username |
+| -- | ----- | -------- | -------- |
+| 1 | Hamish@email.com | password | Hamish |
+| 2 | Oscar@email.com | password | Oscar |
 
-* Database initialization
+- No owner.
 
-* How to run the test suite
+Follows:
 
-* Services (job queues, cache servers, search engines, etc.)
+| user_id | following_id (other user_id) |
+| --- | -------- |
+| 2 | 1 |
 
-* Deployment instructions
+- No ID needed.
+- No owner.
 
-* ...
+Pictures:
+
+| ID | user_id | time_added |
+| -- | ----------- | ---- |
+| 1 | 1 | 26/02/2021 18:00 |
+
+- will use the ID to save the image and find the image.
+- Belongs to Users.
+
+Likes:
+
+| picture_id | user_id |
+| --- | --- |
+| 1 | 2 |
+
+- No ID needed.
+- Belongs to pictures.
+
+Comments:
+
+| picture_id | comment | user_id | time_added |
+| --- | ---- | ----- | ---- |
+| 1 | 'this is a very nice picture' | 2 | 26/02/2021 18:30 |
+
+- Belongs to pictures.
